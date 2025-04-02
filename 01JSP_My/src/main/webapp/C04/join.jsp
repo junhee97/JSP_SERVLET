@@ -13,8 +13,6 @@
 	String userid = request.getParameter("userid");
 	String password = request.getParameter("password");
 	UserDto userDto = new UserDto(userid, password, "ROLE_USER");
-	userDto.setUserid(userid);
-	userDto.setPassword(password);
 	
 	// request 내장객체 userDto 추가
 	request.setAttribute("userDto", userDto);

@@ -6,7 +6,7 @@ public class UserDto {
 	private String role;
 
 	// 생성자
-	UserDto() {
+	public UserDto() {
 	}
 
 	public UserDto(String userid, String password, String role) {

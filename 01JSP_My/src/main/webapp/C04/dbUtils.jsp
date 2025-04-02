@@ -45,7 +45,7 @@
 		UserDto userDto = null;
 		if (rs != null) {
 			if (rs.next()){
-				// userDto = new UserDto();
+				userDto = new UserDto();
 				userDto.setUserid(userid);
 				userDto.setPassword(rs.getString("password"));
 				userDto.setRole(rs.getString("role"));
@@ -76,6 +76,8 @@
 	}
 	
 	if (url.contains("/myinfo")) {
+		request.setAttribute("isConfirm", true);
+		
 		getConnection();
 		
 		String userid = request.getParameter("userid");

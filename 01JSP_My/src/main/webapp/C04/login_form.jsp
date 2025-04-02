@@ -73,7 +73,7 @@ body {
 		<main>
 			<section>
 				<h1>LOGIN</h1>
-				<form action="login_form.jsp" method="post">
+				<form action="login.jsp" method="post">
 					<input type="text" name="userid" /><br> 
 					<input type="text"name="password" /><br> 
 					<input type="submit" value="로그인" />

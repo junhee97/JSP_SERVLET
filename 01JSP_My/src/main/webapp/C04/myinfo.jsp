@@ -9,9 +9,8 @@
 	Boolean isConfirm = (request.getAttribute("isConfirm") != null) ? (Boolean) request.getAttribute("isConfirm") : null;
 
 	if (isConfirm != null && isConfirm == true) {
-		// 현재 위치에서 내용 표시
-		// request.getRequestDispatcher("./dbUtils").forward(request, response);
-		request.getAttribute("myinfo-result");
+		; // 현재 위치에서 내용 표시
+		// request.getAttribute("myinfo-result");
 	} else {
 		// 에러 미발생시 dbUtils.jsp로 해당 내용 Forwarding
 		request.setAttribute("url", "/myinfo"); // DB 요청 처리

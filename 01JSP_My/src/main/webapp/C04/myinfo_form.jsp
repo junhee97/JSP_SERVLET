@@ -79,7 +79,7 @@ body {
 					4. myinfo.jsp(내용표시)
 				-->
 				<h1>MYINFO</h1>
-				<form action="join.jsp" method="post">
+				<form action="myinfo.jsp" method="post">
 					<input type="text" name="userid" /><br> 
 					<input type="submit" value="조회" />
 				</form>
