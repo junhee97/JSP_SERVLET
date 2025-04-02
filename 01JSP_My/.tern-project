@@ -6,5 +6,9 @@
     "outline": {
       
     }
-  }
+  },
+  "libs": [
+    "browser"
+  ],
+  "ecmaVersion": 6
 }

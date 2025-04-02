@@ -21,6 +21,6 @@ response.setContentType("text/html; charset=UTF-8");
 		<div>${param.col3}</div>
 		<div>${param.col4}</div>
 	</nav>
-
+	
 </body>
 </html>
