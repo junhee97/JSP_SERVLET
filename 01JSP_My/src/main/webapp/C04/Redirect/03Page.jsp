@@ -5,14 +5,14 @@
 	String username = request.getParameter("username");
 	String password = request.getParameter("password");
 	String Page02Value = (String) request.getAttribute("02Page");
+	String hobby = request.getParameter("hobby");
 	System.out.println("---------- 03PAGE ----------");
 	System.out.println("username : " + username);
 	System.out.println("password : " + password);
 	System.out.println("Page02Value : " + Page02Value);
+	System.out.println("hobby : " + hobby);
 	System.out.println("----------------------------");
 	
-	String hobby = request.getParameter("hobby");
-	System.out.println("hobby : " + hobby);
 	/* REDIRECT */
 	request.setAttribute("03Page", "03Page's Value");
 	response.sendRedirect("./04Result.jsp");

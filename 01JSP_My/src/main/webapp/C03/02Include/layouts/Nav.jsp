@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 
 <style>
-	nav{background-color: aqua; color: white;}
+	nav{}
 </style>
 <!-- NAV -->
 <nav>NAV 영역</nav>
