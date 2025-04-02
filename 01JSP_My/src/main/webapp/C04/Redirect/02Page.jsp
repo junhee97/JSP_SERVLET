@@ -13,7 +13,7 @@
 	
 	request.setAttribute("02Page", "02PageValue");
 	/* REDIRECT */
-	response.sendRedirect("./03Page.jsp?hobby="+ URLEncoder.encode("등산", "UTF-8"));
+	response.sendRedirect("./03Page.jsp?hobby=" + URLEncoder.encode("등산", "UTF-8"));
 %>
 
 <!DOCTYPE html>
