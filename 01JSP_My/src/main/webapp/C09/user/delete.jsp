@@ -5,12 +5,12 @@
 
 <%
 	String userid = request.getParameter("userid");
-	String password = request.getParameter("password");
-	String role = request.getParameter("role");
 	
 	DBUtils dbutils = DBUtils.getInstance();
-	int result = dbutils.deleteUser(new UserDto(userid, password, role));
+	int result = dbutils.deleteUser(userid);
 	
-	if (result > 0)
-		out.println("<script>alert('delete 성공!'); location.href='./selectAll.jsp'</script>");
+	/* if (result > 0)
+		out.println("<script>alert('delete 성공!'); location.href='./selectAll.jsp'</script>"); */
+		
+	response.sendRedirect("./selectAll.jsp");
 %>
