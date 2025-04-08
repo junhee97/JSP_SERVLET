@@ -1,11 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
-<%@ page import="Utils.*,java.util.*"%>
-<%
-List<MemberDto2> list = DBUtils.getInstance().rankMember();
-%>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -51,7 +45,7 @@ a {
 
 .wrapper>main {
 	height: calc(100vh - 80px - 50px - 80px);
-	overflow: auto;
+	overflow : auto;
 }
 
 .wrapper>main>h2 {
@@ -64,15 +58,15 @@ a {
 	border: 1px solid;
 	border-collapse: collapse;
 	min-width: 500px;
+	min-height: 350px;
 	margin: 0 auto;
-	min-height: 250px;
-	text-align: center;
 }
 
 .wrapper>main table th, .wrapper>main table td {
-	min-width: 80px;
-	min-height: 35px;
+	min-width: 80px !import;
+	min-height: 25px !import;
 	border: 1px solid;
+	text-align : center;
 }
 
 .wrapper>footer {
@@ -84,34 +78,16 @@ a {
 <body>
 
 	<div class="wrapper">
-
-		<%@ include file="/layouts/Header.jsp"%>
-		<%@ include file="/layouts/Nav.jsp"%>
-
+	
+		<%@ include file = "/layouts/Header.jsp" %>
+		<%@ include file = "/layouts/Nav.jsp" %>
+		
 		<main>
-			<h2>후보자등수</h2>
-			<table>
-				<tr>
-					<th>후보번호</th>
-					<th>성명</th>
-					<th>총투표건수</th>
-				</tr>
-				<%
-				for (MemberDto2 dto : list) {
-				%>
-				<tr>
-					<td><%=dto.getM_no()%></td>
-					<td><%=dto.getM_name()%></td>
-					<td><%=dto.getV_total()%></td>
-				</tr>
-				<%
-				}
-				%>
-			</table>
+			<h2>index</h2>
 		</main>
-
-		<%@ include file="/layouts/Footer.jsp"%>
-
+				
+		<%@ include file = "/layouts/Footer.jsp" %>
+	
 	</div>
 
 

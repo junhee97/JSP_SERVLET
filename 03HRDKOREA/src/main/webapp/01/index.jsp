@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<%@ page import="Utils.*,java.util.*"%>
+<%@ page import="Utils.*,java.util.*,java.text.*"%>
+
 <%
-List<MemberDto2> list = DBUtils.getInstance().rankMember();
+List<TeacherDto> list = DBUtils.getInstance().selectAllTeacher();
 %>
 
 <!DOCTYPE html>
@@ -64,15 +65,15 @@ a {
 	border: 1px solid;
 	border-collapse: collapse;
 	min-width: 500px;
+	min-height: 350px;
 	margin: 0 auto;
-	min-height: 250px;
-	text-align: center;
 }
 
 .wrapper>main table th, .wrapper>main table td {
-	min-width: 80px;
-	min-height: 35px;
+	min-width: 80px!import;
+	min-height: 25px!import;
 	border: 1px solid;
+	text-align: center;
 }
 
 .wrapper>footer {
@@ -89,20 +90,36 @@ a {
 		<%@ include file="/layouts/Nav.jsp"%>
 
 		<main>
-			<h2>후보자등수</h2>
+			<h2>강사조회</h2>
 			<table>
 				<tr>
-					<th>후보번호</th>
-					<th>성명</th>
-					<th>총투표건수</th>
+					<th>강사코드</th>
+					<th>강사명</th>
+					<th>강의명</th>
+					<th>수강료</th>
+					<th>강사자격취득일</th>
 				</tr>
 				<%
-				for (MemberDto2 dto : list) {
+				for (TeacherDto dto : list) {
 				%>
 				<tr>
-					<td><%=dto.getM_no()%></td>
-					<td><%=dto.getM_name()%></td>
-					<td><%=dto.getV_total()%></td>
+					<td><%=dto.getTeacher_code() %></td>
+					<td><%=dto.getTeacher_name() %></td>
+					<td><%=dto.getClass_name() %></td>
+					<%
+						int price = dto.getClass_price();
+						DecimalFormat formatter = new DecimalFormat("\\#,###");
+						String formattedPrice = formatter.format(price);
+						out.print("<td>"+formattedPrice+"</td>");
+					%>
+					<%-- <td><%=dto.getClass_price()%></td> --%>
+					<%
+						String yy = dto.getTeacher_regist_date().substring(0,4);
+						String mm = dto.getTeacher_regist_date().substring(4,6);
+						String dd = dto.getTeacher_regist_date().substring(6,8);
+						out.print("<td>"+yy+"년"+mm+"월"+dd+"일</td>");
+					%>					
+					<%-- <td><%=dto.getTeacher_regist_date() %></td> --%>
 				</tr>
 				<%
 				}

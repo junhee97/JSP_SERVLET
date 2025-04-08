@@ -58,7 +58,6 @@ a {
 	border-collapse: collapse;
 	min-width : 500px;
 	margin : 0 auto;
-	min-width : 500px;
 	min-height : 250px;
 	text-align : center;
 }
@@ -134,7 +133,7 @@ a {
 							%>
 							<td><%= dto.getM_jumin() %></td>
 							<td><%= dto.getM_city() %></td>
-							<td><%= dto.getP_tel1() + "-" + dto.getP_tel2() + "-" + dto.getP_tel3() %></td>
+							<td><%= dto.getP_tel1() + "- " + dto.getP_tel2() + " - " + dto.getP_tel3() %></td>
 						</tr>
 				<%
 					}

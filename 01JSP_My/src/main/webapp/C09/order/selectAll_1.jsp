@@ -1,7 +1,7 @@
-<%@page import="java.time.format.DateTimeFormatter"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
+<%@page import="java.time.format.DateTimeFormatter"%>
 <!--
 	품목 별 총합 (총합 별 내림차순)
 	select category, sum(price*quantity) as 총합 from tbl_order

@@ -7,48 +7,71 @@
 <title>Insert title here</title>
 
 <style>
-	:root {
-	}
+:root {
 	
-	* {
-		box-sizing : border-box;
-	}
+}
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	padding: 0;
+	margin: 0;
+}
+
+ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+a {
+	text-decoration: none;
+	color: black;
+}
+
+.wrapper {
 	
-	body {
-		padding : 0;
-		margin : 0;
-	}
-	
-	ul {
-		list-style : none;
-		margin : 0;
-		padding : 0;
-	}
-	
-	a {
-		text-decoration : none;
-		color : black;
-	}
-	
-	.wrapper {
-	}
-	
-	.wrapper>header {
-		height : 80px;
-	}
-	
-	.wrapper>nav {
-		height : 50px;
-	}
-	
-	.wrapper>main {
-		height : calc(100vh - 80px - 50px - 80px);
-	}
-	
-	.wrapper>footer {
-		height : 80px;
-	}
-	
+}
+
+.wrapper>header {
+	height: 80px;
+}
+
+.wrapper>nav {
+	height: 50px;
+}
+
+.wrapper>main {
+	height: calc(100vh - 80px - 50px - 80px);
+	overflow : auto;
+}
+
+.wrapper>main>h2 {
+	text-align: center;
+	font-size: 1.8rem;
+	font-weight: 400;
+}
+
+.wrapper>main table {
+	border: 1px solid;
+	border-collapse: collapse;
+	min-width: 500px;
+	min-height: 350px;
+	margin: 0 auto;
+}
+
+.wrapper>main table th, .wrapper>main table td {
+	min-width: 80px !import;
+	min-height: 25px !import;
+	border: 1px solid;
+	text-align : center;
+}
+
+.wrapper>footer {
+	height: 80px;
+}
 </style>
 
 </head>

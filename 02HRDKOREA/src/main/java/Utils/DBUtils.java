@@ -69,4 +69,84 @@ public class DBUtils {
 		return list;
 	}
 
+	public int insertVote(VoteDto voteDto) throws Exception {
+		pstmt = conn.prepareStatement("insert into tbl_vote_202005 values(?,?,?,?,?,?)");
+		pstmt.setString(1, voteDto.getV_jumin());
+		pstmt.setString(2, voteDto.getV_name());
+		pstmt.setString(3, voteDto.getM_no());
+		pstmt.setString(4, voteDto.getV_time());
+		pstmt.setString(5, voteDto.getV_area());
+		pstmt.setString(6, voteDto.getV_confirm());
+		int result = pstmt.executeUpdate();
+
+		conn.commit();
+
+		pstmt.close();
+		return result;
+	}
+
+	public List<VoteDto> selectAllVote() throws Exception {
+		// SQL
+		// select v_name,
+		// '19'||substr(v_jumin,1,2)||'년'||substr(v_jumin,3,2)||'월'||substr(v_jumin,5,2)||'일생',
+		// v_jumin, v_jumin, m_no, v_time, v_confirm
+		// from tbl_vote_202005
+		// where v_area = '제1투표장';
+
+		String sql = "select v_name, v_jumin,"
+				+ " v_jumin, v_jumin, m_no, substr(v_time,1,2)||':'||substr(v_time,3,2), v_confirm"
+				+ " from tbl_vote_202005 where v_area = '제1투표장'";
+		pstmt = conn.prepareStatement(sql);
+		rs = pstmt.executeQuery();
+
+		List<VoteDto> list = new ArrayList();
+		VoteDto voteDto = null;
+		if (rs != null) {
+			while (rs.next()) {
+				voteDto = new VoteDto();
+				voteDto.setV_name(rs.getString(1));
+				voteDto.setV_jumin(rs.getString(2));
+				voteDto.setV_jumin(rs.getString(3));
+				voteDto.setV_jumin(rs.getString(4));
+				voteDto.setM_no(rs.getString(5));
+				voteDto.setV_time(rs.getString(6));
+				voteDto.setV_confirm(rs.getString(7));
+				list.add(voteDto);
+			}
+		}
+		rs.close();
+		pstmt.close();
+		return list;
+	}
+
+	public List<MemberDto2> rankMember() throws Exception {
+		// SQL
+		// select m.m_no, m_name, count(*) from tbl_member_202005 m
+		// join tbl_vote_202005 v
+		// on m.m_no = v.m_no
+		// group by m.m_no, m_name
+		// order by count(*) desc;
+
+		String sql = "select m.m_no, m_name, count(*) from tbl_member_202005 m" + " join tbl_vote_202005 v"
+				+ " on m.m_no = v.m_no" + " group by m.m_no, m_name" + " order by count(*) desc";
+		pstmt = conn.prepareStatement(sql);
+		rs = pstmt.executeQuery();
+		
+		List<MemberDto2> list = new ArrayList();
+		MemberDto2 memberDto2 = null;
+		if (rs != null) {
+			while (rs.next()) {
+				memberDto2 = new MemberDto2();
+				memberDto2.setM_no(rs.getString(1));
+				memberDto2.setM_name(rs.getString(2));
+				memberDto2.setV_total(rs.getString(3));
+				list.add(memberDto2);
+			}
+		}
+		
+		rs.close();
+		pstmt.close();
+		return list;
+	}
+
 }
