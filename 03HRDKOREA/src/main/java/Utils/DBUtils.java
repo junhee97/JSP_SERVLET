@@ -93,13 +93,14 @@ public class DBUtils {
 
 	public List<MemberDto> selectAllMember() throws Exception {
 		// SQL
-		// select c.regist_month, m.c_no, m.c_name, t.class_name, c.class_area,
-		// c.tuition, m.grade
-		// from tbl_member_202201 m, tbl_class_202201 c, tbl_teacher_202201 t
-		// where c.c_no = M.c_no and c.teacher_code = t.teacher_code;
+		// select substr(c.regist_month,0,4)||'년'||substr(c.regist_month,5,2)||'월', m.c_no, m.c_name, t.class_name, c.class_area, c.tuition, m.grade
+		// from tbl_member_202201 m
+		// join tbl_class_202201 c on m.c_no = c.c_no
+		// join tbl_teacher_202201 t on c.teacher_code = t.teacher_code;
 		String sql = "select substr(c.regist_month,0,4)||'년'||substr(c.regist_month,5,2)||'월', m.c_no, m.c_name, t.class_name, c.class_area, c.tuition, m.grade"
-				+ " from tbl_member_202201 m, tbl_class_202201 c, tbl_teacher_202201 t"
-				+ " where c.c_no = M.c_no and c.teacher_code = t.teacher_code";
+				+ " from tbl_member_202201 m"
+				+ " join tbl_class_202201 c on m.c_no = c.c_no"
+				+ " join tbl_teacher_202201 t on c.teacher_code = t.teacher_code";
 		pstmt = conn.prepareStatement(sql);
 		rs = pstmt.executeQuery();
 		List<MemberDto> list = new ArrayList();
