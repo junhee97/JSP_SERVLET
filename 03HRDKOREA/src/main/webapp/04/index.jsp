@@ -1,5 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
+<%@ page import="Utils.*,java.util.*,java.text.*"%>
+
+<%
+List<TeacherDto> list = DBUtils.getInstance().selectAllPrice();
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -46,19 +53,20 @@ a {
 .wrapper>main {
 	height: calc(100vh - 80px - 50px - 80px);
 	overflow : auto;
+	background-color : lightgray;
 }
 
 .wrapper>main>h2 {
 	text-align: center;
 	font-size: 1.8rem;
-	font-weight: 400;
+	font-weight: 600;
 }
 
 .wrapper>main table {
 	border: 1px solid;
 	border-collapse: collapse;
 	min-width: 500px;
-	min-height: 350px;
+	min-height: 200px;
 	margin: 0 auto;
 }
 
@@ -84,6 +92,33 @@ a {
 		
 		<main>
 			<h2>강사매출현황</h2>
+			<table style="width: 800px;">
+				<tr>
+					<th>강사코드</th>
+					<th>강의명</th>
+					<th>강사명</th>
+					<th>총매출</th>
+				</tr>
+				<%
+				for (TeacherDto dto : list) {
+				%>	
+				<tr>
+					<td><%=dto.getTeacher_code()%></td>
+					<td><%=dto.getClass_name()%></td>
+					<td style="text-align:right;"><%=dto.getTeacher_name()%></td>
+					<%
+					int price = dto.getClass_price();
+					DecimalFormat formatter = new DecimalFormat("\\#,###");
+					String formattedprice = formatter.format(price);
+					out.print("<td style='text-align:right;'>"+formattedprice+"</td>");
+					%>
+					<%-- <td><%=dto.getClass_price()%></td> --%>
+				</tr>
+				
+				<%	
+				}
+				%>
+			</table>
 		</main>
 				
 		<%@ include file = "/layouts/Footer.jsp" %>

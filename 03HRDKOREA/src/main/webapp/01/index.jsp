@@ -53,19 +53,20 @@ a {
 .wrapper>main {
 	height: calc(100vh - 80px - 50px - 80px);
 	overflow: auto;
+	background-color : lightgray;
 }
 
 .wrapper>main>h2 {
 	text-align: center;
 	font-size: 1.8rem;
-	font-weight: 400;
+	font-weight: 600;
 }
 
 .wrapper>main table {
 	border: 1px solid;
 	border-collapse: collapse;
 	min-width: 500px;
-	min-height: 350px;
+	min-height: 200px;
 	margin: 0 auto;
 }
 

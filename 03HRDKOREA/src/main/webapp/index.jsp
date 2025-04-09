@@ -46,19 +46,20 @@ a {
 .wrapper>main {
 	height: calc(100vh - 80px - 50px - 80px);
 	overflow : auto;
+	background-color : lightgray;
 }
 
 .wrapper>main>h2 {
 	text-align: center;
 	font-size: 1.8rem;
-	font-weight: 400;
+	font-weight: 600;
 }
 
 .wrapper>main table {
 	border: 1px solid;
 	border-collapse: collapse;
 	min-width: 500px;
-	min-height: 350px;
+	min-height: 200px;
 	margin: 0 auto;
 }
 
@@ -83,7 +84,7 @@ a {
 		<%@ include file = "/layouts/Nav.jsp" %>
 		
 		<main>
-			<h2>index</h2>
+			<h2>골프연습장 회원관리 프로그램</h2>
 		</main>
 				
 		<%@ include file = "/layouts/Footer.jsp" %>

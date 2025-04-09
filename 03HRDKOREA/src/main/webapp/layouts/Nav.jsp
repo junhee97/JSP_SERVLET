@@ -3,7 +3,7 @@
 
 <style>
 	nav {
-		background-color : lightgray;
+		background-color : #9b97fb;
 	}
 
 	nav>ul {

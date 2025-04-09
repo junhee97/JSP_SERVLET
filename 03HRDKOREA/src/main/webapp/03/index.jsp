@@ -1,5 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
+<%@ page import="Utils.*,java.util.*,java.text.*"%>
+
+<%
+List<MemberDto> list = DBUtils.getInstance().selectAllMember();
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -45,28 +52,29 @@ a {
 
 .wrapper>main {
 	height: calc(100vh - 80px - 50px - 80px);
-	overflow : auto;
+	overflow: auto;
+	background-color : lightgray;
 }
 
 .wrapper>main>h2 {
 	text-align: center;
 	font-size: 1.8rem;
-	font-weight: 400;
+	font-weight: 600;
 }
 
 .wrapper>main table {
 	border: 1px solid;
 	border-collapse: collapse;
 	min-width: 500px;
-	min-height: 350px;
+	min-height: 200px;
 	margin: 0 auto;
 }
 
 .wrapper>main table th, .wrapper>main table td {
-	min-width: 80px !import;
-	min-height: 25px !import;
+	min-width: 80px!import;
+	min-height: 25px!import;
 	border: 1px solid;
-	text-align : center;
+	text-align: center;
 }
 
 .wrapper>footer {
@@ -78,13 +86,13 @@ a {
 <body>
 
 	<div class="wrapper">
-	
-		<%@ include file = "/layouts/Header.jsp" %>
-		<%@ include file = "/layouts/Nav.jsp" %>
-		
+
+		<%@ include file="/layouts/Header.jsp"%>
+		<%@ include file="/layouts/Nav.jsp"%>
+
 		<main>
 			<h2>회원정보조회</h2>
-			<table>
+			<table style="width: 1200px; height : 300px;">
 				<tr>
 					<th>수강월</th>
 					<th>회원번호</th>
@@ -94,11 +102,32 @@ a {
 					<th>수강료</th>
 					<th>등급</th>
 				</tr>
+				<%
+				for (MemberDto dto : list) {
+				%>
+				<tr>
+					<td><%=dto.getRegist_month()%></td>
+					<td><%=dto.getM_no()%></td>
+					<td><%=dto.getM_name()%></td>
+					<td><%=dto.getC_name()%></td>
+					<td><%=dto.getC_area()%></td>
+					<%
+					int price = dto.getTuition();
+					DecimalFormat formatter = new DecimalFormat("\\#,###");
+					String formattedPrice = formatter.format(price);
+					out.print("<td>" + formattedPrice + "</td>");
+					%>
+					<%-- <td><%=dto.getTuition()%></td> --%>
+					<td><%=dto.getM_grade()%></td>
+				</tr>
+				<%
+				}
+				%>
 			</table>
 		</main>
-				
-		<%@ include file = "/layouts/Footer.jsp" %>
-	
+
+		<%@ include file="/layouts/Footer.jsp"%>
+
 	</div>
 
 

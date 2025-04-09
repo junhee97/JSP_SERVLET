@@ -8,8 +8,9 @@ public class MemberDto {
 	private String c_area;
 	private int tuition;
 	private String m_grade;
-	
-	public MemberDto () {
+
+	// 생성자
+	public MemberDto() {
 	}
 
 	public MemberDto(String regist_month, String m_no, String m_name, String c_name, String c_area, int tuition,
@@ -24,6 +25,7 @@ public class MemberDto {
 		this.m_grade = m_grade;
 	}
 
+	// getter % setter
 	public String getRegist_month() {
 		return regist_month;
 	}
@@ -80,10 +82,11 @@ public class MemberDto {
 		this.m_grade = m_grade;
 	}
 
+	// toString
 	@Override
 	public String toString() {
 		return "MemberDto [regist_month=" + regist_month + ", m_no=" + m_no + ", m_name=" + m_name + ", c_name="
 				+ c_name + ", c_area=" + c_area + ", tuition=" + tuition + ", m_grade=" + m_grade + "]";
 	}
-	
+
 }
