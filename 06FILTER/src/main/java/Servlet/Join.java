@@ -40,8 +40,8 @@ public class Join extends HttpServlet {
 
 		int result = 0;
 		try {
-			// UserDto userDto = new UserDto(username, password, "ROLE_USER");
-			// result = OracleDBUtils.getInstance().insertUser(userDto);
+			UserDto userDto = new UserDto(username, password, "ROLE_USER");
+			result = OracleDBUtils.getInstance().insertUser(userDto);
 
 		} catch (Exception e) {
 			e.printStackTrace();
