@@ -18,6 +18,7 @@ public class Login extends HttpServlet {
 	// GET - /login.do - /WEB-INF/user/login.jsp 연결
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		System.out.println("GET /login.do...");
 		req.getRequestDispatcher("/WEB-INF/user/login.jsp").forward(req, resp);
 	}
 
@@ -27,6 +28,7 @@ public class Login extends HttpServlet {
 	// 실패시 : /login.do로 포워딩
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		System.out.println("POST /login.do...");
 		// 파라미터 받기
 		String username = req.getParameter("username");
 		String password = req.getParameter("password");
@@ -34,24 +36,6 @@ public class Login extends HttpServlet {
 		// 유효성(생략)
 
 		// 처리작업
-
-		//UserDto userDto = new UserDto();
-		//userDto.setUsername(username);
-		//userDto.setPassword(password);
-
-		//try {
-			//UserDto result = OracleDBUtils.getInstance().selectUser(userDto);
-
-			// 뷰로 이동
-			//if (result != null) {
-				//resp.sendRedirect(req.getContextPath() + "/main.do");
-			//} else {
-				//req.setAttribute("loginError_msg", "ID 또는 PW가 일치하지 않습니다.");
-				//req.getRequestDispatcher("/WEB-INF/user/login.jsp").forward(req, resp);
-			//}
-		//} catch (Exception e) {
-			//e.printStackTrace();
-		//}
 
 		boolean isAuth = false;
 		try {
@@ -66,13 +50,12 @@ public class Login extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		// 뷰
-		if(isAuth) {
-			resp.sendRedirect(req.getContextPath() + "/main.do");
-		} else {
+		if (!isAuth) {
 			req.setAttribute("loginError_msg", "ID 또는 PW가 일치하지 않습니다.");
 			req.getRequestDispatcher("/WEB-INF/user/login.jsp").forward(req, resp);
+			return;
 		}
 
 	}

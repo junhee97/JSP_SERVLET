@@ -17,6 +17,9 @@
 	<div>
 		${loginError_msg}
 	</div>
+	<div>
+		${param.msg}
+	</div>
 
 </body>
 </html>
