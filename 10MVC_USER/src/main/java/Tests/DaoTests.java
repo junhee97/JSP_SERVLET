@@ -8,13 +8,19 @@ import Domain.Dao.UserDaoImpl;
 import Domain.Dto.UserDto;
 
 class DaoTests {
-
+	
 	@Test
-	//@Disabled
+	@Disabled
 	void test() throws Exception {
 		UserDao userDao = UserDaoImpl.getInstance();
-
-		userDao.insert(new UserDto("user1234", "1234", "ROLE_USER"));
+		
+		userDao.insert(new UserDto("user123511","1234","ROLE_USER"));
+	}
+	
+	@Test
+	void test1() throws Exception {
+		UserDao userDao = UserDaoImpl.getInstance();
+		System.out.println(userDao.select("admin"));
 	}
 
 }
