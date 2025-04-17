@@ -37,9 +37,9 @@ public class BookListController implements SubController {
 
 			Criteria criteria = null;
 			if (pageno == null) {
-				criteria = new Criteria(); // pageno = 1, amount = 15, type = null, keyword = null
+				criteria = new Criteria(); // pageno = 1, amount = 10, type = null, keyword = null
 			} else {
-
+				criteria = new Criteria(pageno, 10, type, keyword);
 			}
 
 			// 서비스
@@ -62,7 +62,6 @@ public class BookListController implements SubController {
 			} catch (Exception e2) {
 			}
 		}
-
 	}
 
 	private boolean isValid(BookDto bookDto) {
