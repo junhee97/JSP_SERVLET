@@ -46,9 +46,15 @@ class DaoTests {
 	}
 	
 	@Test
-	// @Disabled
+	@Disabled
 	void test4() throws Exception {
 		BookReplyDaoImpl.getInstance().insert(new BookReplyDto(-1, "CDG000000001", "admin", "aaa", LocalDateTime.now()));
+	}
+	
+	@Test
+	// @Disabled
+	void test5() throws Exception {
+		BookReplyDaoImpl.getInstance().selectAll("CDJ000025511").forEach(System.out::println);
 	}
 
 }

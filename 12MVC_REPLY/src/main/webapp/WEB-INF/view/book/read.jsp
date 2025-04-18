@@ -61,7 +61,7 @@
 			<div class="reply-block">
 				<div class="reply-header">
 					<div>
-						댓글수 : <span>00</span>
+						댓글수 : <span class="reply-cnt">0</span>
 					</div>
 					<hr />
 					<div>
@@ -71,7 +71,8 @@
 				</div>
 				<div class="reply-body">
 					<div class="items">
-						<div class="item">
+					
+						<!-- <div class="item">
 							<div class="left">
 								<div class="profile"></div>
 								<div class="username">username</div>
@@ -83,7 +84,8 @@
 								</div>
 								<div class="button-group"></div>
 							</div>
-						</div>
+						</div> -->
+						
 					</div>
 				</div>
 			</div>

@@ -132,4 +132,14 @@ public class BookServiceImpl {
 		int result = bookReplyDaoImpl.insert(dto);
 		return result > 0;
 	}
+
+	public List<BookReplyDto> getAllBookReply(String bookCode) throws Exception {
+		List<BookReplyDto> list = bookReplyDaoImpl.selectAll(bookCode);
+		return list;
+	}
+
+	public long bookReplyCount(String bookCode) throws Exception {
+		long cnt = bookReplyDaoImpl.count(bookCode);
+		return cnt;
+	}
 }

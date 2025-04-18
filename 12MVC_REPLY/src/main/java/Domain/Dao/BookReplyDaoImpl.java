@@ -3,7 +3,10 @@ package Domain.Dao;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.util.LinkedList;
+import java.util.List;
 
+import Domain.Dto.BookDto;
 import Domain.Dto.BookReplyDto;
 
 public class BookReplyDaoImpl extends Dao {
@@ -38,6 +41,72 @@ public class BookReplyDaoImpl extends Dao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new SQLException("BOOKDAO's INSERT SQL EXCEPTION!!");
+		} finally {
+			try {
+				pstmt.close();
+			} catch (Exception e2) {
+			}
+			// connection release
+			connectionPool.releaseConnection(connectionItem);
+		}
+	}
+
+	public List<BookReplyDto> selectAll(String bookCode) throws Exception {
+		List<BookReplyDto> list = new LinkedList();
+		BookReplyDto dto = null;
+		try {
+			// connection get
+			connectionItem = connectionPool.getConnection();
+			Connection conn = connectionItem.getConn();
+
+			pstmt = conn.prepareStatement("select * from tbl_reply where bookCode = ? order by no desc");
+			pstmt.setString(1, bookCode);
+			rs = pstmt.executeQuery();
+			if (rs != null) {
+				while (rs.next()) {
+					dto = new BookReplyDto();
+					dto.setNo(rs.getInt(1));
+					dto.setBookCode(rs.getString(2));
+					dto.setUsername(rs.getString(3));
+					dto.setContents(rs.getString(4));
+					dto.setCreateAt(rs.getTimestamp(5).toLocalDateTime());
+					list.add(dto);
+				}
+			}
+			return list;
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new SQLException("BOOKDAO's SELECT SQL EXCEPTION!!");
+		} finally {
+			try {
+				pstmt.close();
+			} catch (Exception e2) {
+			}
+			// connection release
+			connectionPool.releaseConnection(connectionItem);
+		}
+	}
+	
+	public long count(String bookCode) throws Exception {
+		long count = 0;
+		try {
+			// connection get
+			connectionItem = connectionPool.getConnection();
+			Connection conn = connectionItem.getConn();
+
+			pstmt = conn.prepareStatement("select count(*) from tbl_reply where bookCode = ?");
+			pstmt.setString(1, bookCode);
+			rs = pstmt.executeQuery();
+			
+			if (rs != null && rs.next())
+				count = rs.getLong(1);
+			
+			return count;
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new SQLException("BOOKDAO's SELECT SQL EXCEPTION!!");
 		} finally {
 			try {
 				pstmt.close();
